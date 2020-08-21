@@ -1,0 +1,11 @@
+# Pre-set
+.DS_Store
+.idea
+*.log
+tmp/
+
+# Manually set
+
+
+# Manually set - these files may contain private keys/ etc.
+org-crypt-config.el
