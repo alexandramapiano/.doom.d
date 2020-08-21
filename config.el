@@ -76,7 +76,7 @@
 (use-package! org
   :defer t
   :ensure org-plus-contrib
-  :init
+  :config
   (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n!)" "PROJ(p!)" "|" "DONE(x!)"
                                  )
                        (sequence "WAITING(w@/!)" "SMDAY(s@/!)" "|" "CANCELLED(c@/!)" "PHONE(P)" "MEETING(M)"
