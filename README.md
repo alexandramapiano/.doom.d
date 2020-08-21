@@ -1,12 +1,7 @@
-My personal config based on Vanilla (GNU) Emacs - without Doom Emacs or Spacemacs
-
-So far, no evil
+My personal config based on Vanilla (GNU) Emacs. So far, without evil.
 
 Commits are slow as I mainly use the master branch (w/ Doom Emacs).
 
-## Install
+## Moved
 
-* Back up your .emacs.d directory is you have one
-
-`git clone --branch vanilla https://github.com/earne/yikes.git ~/.emacs.d`
-
+Moved to a separate repo: https://github.com/earnestma/altemacs
