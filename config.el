@@ -82,10 +82,19 @@
                        (sequence "WAITING(w@/!)" "SMDAY(s@/!)" "|" "CANCELLED(c@/!)" "PHONE(P)" "MEETING(M)"
                                  )
                        ))
+  (setq org-todo-keyword-faces
+        (quote (("TODO" :foreground "yellow" :weight bold)
+                ("NEXT" :foreground "white" :weight bold)
+                ("PROJ" :foreground "green" :weight bold)
+                ("WAITING" :foreground "blue" :weight bold)
+                ("SMDAY" :foreground "cyan")
+                ("PHONE" :foreground "gray")
+                ("MEETING" :foreground "gray")
+                )))
   :custom
   (org-directory "~/org/")
-  (calendar-latitude 43.7682) ;;Toronto, ON, Canada
-  (calendar-longitude -79.4126)
+  (calendar-latitude 43.7682)   ;; Toronto, ON, Canada -> Change to your location
+  (calendar-longitude -79.4126) ;; Try M-x sunrise-sunset
   (org-treat-S-cursor-todo-selection-as-state-change nil)
   (org-global-properties (quote (("Effort_ALL" . "0:05 0:10 0:15 0:20 0:30 0:45 1:00 1:30 2:00 4:00 6:00 8:00"))
                                 ))
