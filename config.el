@@ -20,8 +20,12 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
 
-;; General Configuration --------------------------------------------
-
+;; General Configuration -------------
+;;             __
+;;      (___()'`;
+;;      /,    /`
+;;      \\"--\\
+;;
 (setq
  user-full-name "Earnest Ma"
  doom-font(font-spec :family "Jetbrains Mono" :size 18)
@@ -79,12 +83,12 @@
                                  )
                        ))
   :custom
+  (org-directory "~/org/")
   (calendar-latitude 43.7682) ;;Toronto, ON, Canada
   (calendar-longitude -79.4126)
   (org-treat-S-cursor-todo-selection-as-state-change nil)
   (org-global-properties (quote (("Effort_ALL" . "0:05 0:10 0:15 0:20 0:30 0:45 1:00 1:30 2:00 4:00 6:00 8:00"))
                                 ))
-
   (org-tag-alist (quote ((:startgroup)
                          ;; LOCATIONS
                          ("@errands" . ?E)
@@ -104,6 +108,11 @@
                          ("home" . ?h)
                          )
                         ))
+  (org-enforce-todo-dependencies t)
+  (org-log-into-drawer "LOGBOEK")
+  (org-refile-allow-creating-parent-nodes 'confirm)
+  (org-refile-use-outline-path nil)
+  (org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
   )
 
 ;; org-capture config
@@ -116,13 +125,14 @@
 (use-package! org-agenda
   :after org
   :bind (("C-c a" . org-agenda))
-  :init
-  (setq org-directory "~/org/")
   :custom
   (org-agenda-files '("~/org/"))
   (org-agenda-dim-blocked-tasks t)
-  (org-enforce-todo-dependencies t)
   (org-agenda-span 1)
+  (org-agenda-start-on-weekday 1)
+  (org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled)
+  (org-agenda-skip-deadline-if-done nil)
+  (org-agenda-skip-scheduled-if-done nil)
   )
 
 ;; org-journal config
