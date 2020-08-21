@@ -77,7 +77,7 @@
   :defer t
   :ensure org-plus-contrib
   :config
-  (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n!)" "PROJ(p!)" "|" "DONE(x!)"
+  (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n!)" "|" "DONE(x!)"
                                  )
                        (sequence "WAITING(w@/!)" "SMDAY(s@/!)" "|" "CANCELLED(c@/!)" "PHONE(P)" "MEETING(M)"
                                  )
@@ -91,11 +91,18 @@
                 ("PHONE" :foreground "gray")
                 ("MEETING" :foreground "gray")
                 )))
+  (setq org-todo-state-tags-triggers
+        (quote (("CANCELLED" ("CANCELLED" . t))
+                ("WAITING" ("WAITING" . t))
+                ("SMDAY" ("SMDAY" . t))
+                ("DONE" ("WAITING" "SMDAY" "CANCELLED"))
+                ("TODO" ("WAITING") ("CANCELLED") ("SMDAY"))
+                ("NEXT" ("WAITING") ("CANCELLED") ("SMDAY"))
+                )))
   :custom
   (org-directory "~/org/")
   (calendar-latitude 43.7682)   ;; Toronto, ON, Canada -> Change to your location
   (calendar-longitude -79.4126) ;; Try M-x sunrise-sunset
-  (org-treat-S-cursor-todo-selection-as-state-change nil)
   (org-global-properties (quote (("Effort_ALL" . "0:05 0:10 0:15 0:20 0:30 0:45 1:00 1:30 2:00 4:00 6:00 8:00"))
                                 ))
   (org-tag-alist (quote ((:startgroup)
@@ -117,8 +124,10 @@
                          ("home" . ?h)
                          )
                         ))
+  (org-treat-S-cursor-todo-selection-as-state-change nil)
   (org-enforce-todo-dependencies t)
   (org-log-into-drawer "LOGBOEK")
+  (org-use-fast-todo-selection 'auto)
   (org-refile-allow-creating-parent-nodes 'confirm)
   (org-refile-use-outline-path nil)
   (org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
@@ -128,6 +137,8 @@
 (use-package! org-capture
   :after org
   :bind (("C-c c" . org-capture))
+  :custom
+  (org-default-notes-file "~/org/refile.org")
   )
 
 ;; org-agenda config
