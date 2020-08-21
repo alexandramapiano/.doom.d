@@ -6,3 +6,6 @@ Meant to be used with [Doom Emacs](https://github.com/hlissner/doom-emacs)
 
 If for some reason you like this and want it, install Doom Emacs, if you have a .emacs.d or .doom.d configuration back it up and `git clone https://github.com/earnestma/yikes.git ~/.doom.d`.
 
+## IN Progress
+
+Check the [projects page](https://github.com/earnestma/yikes/projects) for some more details!
