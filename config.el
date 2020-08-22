@@ -35,6 +35,11 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (prefer-coding-system 'utf-8)
 
+;; Prompt when unsaved buffers before quitting Emacs Daemon.
+;; emacsclient -e '(kill-emacs)'
+;; emacsclient -e '(client-save-kill-emacs)'
+(load! "emacs-daemon-quit-prompt.el")
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
