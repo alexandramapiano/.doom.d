@@ -188,12 +188,13 @@
   (org-agenda-window-setup 'other-window) ;;options include current-window, only-window, reorganize-frame, other-frame
   (org-agenda-files '("~/org/"))
   (org-agenda-dim-blocked-tasks t)
-  (org-agenda-span 1)
+  (org-agenda-span 'day)
   (org-agenda-start-on-weekday 1)
   (org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled)
   (org-agenda-skip-deadline-if-done nil)
   (org-agenda-skip-scheduled-if-done nil)
   )
+(evil-set-initial-state 'org-agenda-mode 'emacs)
 
 ;; org-journal config
 (use-package! org-journal
@@ -202,11 +203,24 @@
   :bind (("C-c t" . org-journal-new-entry))
   :init
   (setq org-journal-prefix-key "C-c j")
+  :preface
+  (defun org-journal-file-header-func (time)
+    "Custom function to create journal header."
+    (concat
+      (pcase org-journal-file-type
+       (`daily "#+TITLE: Dagelijks dagboek\n#+STARTUP: showeverything")
+       (`weekly "#+TITLE: Wekelijks dagboek\n#+STARTUP: folded")
+       (`monthly "#+TITLE: Maandelijks dagboek\n#+STARTUP: folded")
+       (`yearly "#+TITLE: Jaarlijks dagboek \n#+STARTUP: folded")
+     )))
   :custom
   (org-journal-dir "~/org/logboek/")
   (org-journal-file-type 'weekly)
-  (org-journal-file-format "%Y-%m-%d.org")
+  (org-journal-file-format "%V_%Y-%m.org")
+  (org-journal-date-format "%A, %d %B %Y")
+  (org-journal-file-header 'org-journal-file-header-func)
   )
+
 
 ;; Remove empty LOGBOOK drawers on clock out
 (defun bh/remove-empty-drawer-on-clock-out ()
