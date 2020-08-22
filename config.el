@@ -33,6 +33,9 @@
  doom-theme 'doom-one
  display-line-numbers-type t)
 
+(fset 'yes-or-no-p 'y-or-n-p)
+(prefer-coding-system 'utf-8)
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
@@ -63,7 +66,7 @@
 
 
 ;; ----------------- Org-Mode Configuration -----------------------------
-;;
+;;                                                  t h i s   i s   l o n g
 ;;
 ;;              |\      _,,,---,,_
 ;;        ZZZzz /,``'-'`'    -.  ;-;;,_
@@ -103,6 +106,21 @@
   (org-directory "~/org/")
   (calendar-latitude 43.7682)   ;; Toronto, ON, Canada -> Change to your location
   (calendar-longitude -79.4126) ;; Try M-x sunrise-sunset
+  (org-modules '(org-crypt
+                 org-habit
+                 org-clock
+                 ol-bibtex
+                 ol-bbdb
+                 ol-docview
+                 ol-info
+                 ol-irc
+                 ol-w3m
+                 ol-gnus
+                 ol-mhe
+                 ol-rmail
+                 ol-eww
+                 org-protocol
+                 ))
   (org-global-properties (quote (("Effort_ALL" . "0:05 0:10 0:15 0:20 0:30 0:45 1:00 1:30 2:00 4:00 6:00 8:00"))
                                 ))
   (org-tag-alist (quote ((:startgroup)
@@ -124,13 +142,19 @@
                          ("home" . ?h)
                          )
                         ))
+  ;;(org-tags-exclude-from-inheritance '("ex" "ex2"))
+  (org-columns-set-default-format "%80ITEM(Task) %10Effort(Effort){:} %10CLOCKSUM")
   (org-treat-S-cursor-todo-selection-as-state-change nil)
   (org-enforce-todo-dependencies t)
-  (org-log-into-drawer "LOGBOEK")
+  (org-log-into-drawer "LOGBOOK")
   (org-use-fast-todo-selection 'auto)
   (org-refile-allow-creating-parent-nodes 'confirm)
-  (org-refile-use-outline-path nil)
-  (org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
+  (org-refile-use-outline-path 'file)
+  (org-refile-targets '((org-agenda-files . (:maxlevel . 4))))
+  (org-log-done 'time)
+  (org-log-reschedule 'note)
+  (org-habit-show-habits-only-for-today t) ;;alternate - nil
+  (org-clock-into-drawer "CLOCKING")
   )
 
 ;; org-capture config
@@ -139,6 +163,13 @@
   :bind (("C-c c" . org-capture))
   :custom
   (org-default-notes-file "~/org/refile.org")
+  (org-capture-templates
+   `(("t" "Task" entry (file, "~/org/refile.org")
+      "* TODO %^{Task}\n:PROPERTIES:\n- Added: %U\n:END:"
+      :empty-lines 1
+      :immediare-finish t)
+     )
+   )
   )
 
 ;; org-agenda config
