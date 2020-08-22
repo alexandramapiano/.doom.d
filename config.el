@@ -32,7 +32,6 @@
  doom-big-font(font-spec :family "Jetbrains Mono" :size 33)
  doom-theme 'doom-one
  display-line-numbers-type t)
-
 (fset 'yes-or-no-p 'y-or-n-p)
 (prefer-coding-system 'utf-8)
 
@@ -66,7 +65,7 @@
 
 
 ;; ----------------- Org-Mode Configuration -----------------------------
-;;                                                  t h i s   i s   l o n g
+;;                                              t h i s   i s   l o n g
 ;;
 ;;              |\      _,,,---,,_
 ;;        ZZZzz /,``'-'`'    -.  ;-;;,_
@@ -162,12 +161,21 @@
   :after org
   :bind (("C-c c" . org-capture))
   :custom
-  (org-default-notes-file "~/org/refile.org")
+  (org-default-notes-file "~/org/ooin.org")
   (org-capture-templates
-   `(("t" "Task" entry (file, "~/org/refile.org")
+   `(("t" "Task" entry (file, "~/org/ooin.org")
       "* TODO %^{Task}\n:PROPERTIES:\n- Added: %U\n:END:"
       :empty-lines 1
-      :immediare-finish t)
+      :immediate-finish t
+      :clock-resume
+      :kill-buffer)
+     ("r" "Reviews")
+     ("rd" "Daily Review" entry (file+olp+datetree, "~/org/beoordeling.org")
+      (file "~/org/templates/review-daily.org")
+      :immediate-finish t)
+     ("rw" "Weekly Review" entry (file+olp+datetree, "~/org/beoordeling.org")
+      (file "~/org/templates/review-weekly.org")
+      :immediate-finish t)
      )
    )
   )
@@ -177,6 +185,7 @@
   :after org
   :bind (("C-c a" . org-agenda))
   :custom
+  (org-agenda-window-setup 'other-window) ;;options include current-window, only-window, reorganize-frame, other-frame
   (org-agenda-files '("~/org/"))
   (org-agenda-dim-blocked-tasks t)
   (org-agenda-span 1)
@@ -198,6 +207,14 @@
   (org-journal-file-type 'weekly)
   (org-journal-file-format "%Y-%m-%d.org")
   )
+
+;; Remove empty LOGBOOK drawers on clock out
+(defun bh/remove-empty-drawer-on-clock-out ()
+  (interactive)
+  (save-excursion
+    (beginning-of-line 0)
+    (org-remove-empty-drawer-at (point))))
+(add-hook 'org-clock-out-hook 'bh/remove-empty-drawer-on-clock-out 'append)
 
 ;; org-crypt config
 ;; This is my current org-crypt config
