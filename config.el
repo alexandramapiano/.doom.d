@@ -170,10 +170,10 @@
   (org-capture-templates
    `(("t" "Task" entry (file, "~/org/ooin.org")
       "* TODO %^{Task}\n:PROPERTIES:\n- Added: %U\n:END:"
-      :empty-lines 1
-      :immediate-finish t
-      :clock-resume
-      :kill-buffer)
+      :empty-lines 1 :immediate-finish t :clock-resume :kill-buffer)
+     ("h" "New Habit" entry (file, "~/org/ooin.org")
+      "* TODO %^{Habit}\nSCHEDULED: [%^{Next due date}t %^{Frequency}]\n:PROPERTIES:\n:STYLE: habit\n:END:"
+      :empty-lines 1 :immediate-finish t :clock-resume :kill-buffer)
      ("r" "Reviews")
      ("rd" "Daily Review" entry (file+olp+datetree, "~/org/beoordeling.org")
       (file "~/org/templates/review-daily.org")
@@ -246,3 +246,9 @@
 ;; (org-crypt-key "AAAAAAAA...")
 ;; )
 (load! "org-crypt-config.el")
+
+
+
+
+;;          _______           _    E N D  O F
+;;     _.-'|+__|__-|'-._,.-(((_)   C O N F I G  F I L E
