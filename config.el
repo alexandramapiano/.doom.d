@@ -251,6 +251,9 @@
 (load! "org-crypt-config.el")
 
 
+;; ledger-mode
+;;
+(load! "mode-ledger-mode.el")
 
 
 ;;          _______           _    E N D  O F
