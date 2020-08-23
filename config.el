@@ -191,7 +191,8 @@
   :after org
   :bind (("C-c a" . org-agenda))
   :custom
-  (org-agenda-window-setup 'other-window) ;;options include current-window, only-window, reorganize-frame, other-frame
+  (org-agenda-window-setup 'other-window) ;;options include other-window, current-window, only-window, reorganize-frame, other-frame
+  (org-agenda-restore-windows-after-quit 't)
   (org-agenda-files '("~/org/"))
   (org-agenda-dim-blocked-tasks t)
   (org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled)
