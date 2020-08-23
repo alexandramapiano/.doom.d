@@ -193,11 +193,12 @@
   (org-agenda-window-setup 'other-window) ;;options include current-window, only-window, reorganize-frame, other-frame
   (org-agenda-files '("~/org/"))
   (org-agenda-dim-blocked-tasks t)
-  (org-agenda-span 'day)
-  (org-agenda-start-on-weekday 1)
   (org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled)
   (org-agenda-skip-deadline-if-done nil)
   (org-agenda-skip-scheduled-if-done nil)
+  (org-agenda-span 4)
+  (org-agenda-start-on-weekday nil)
+  (org-agenda-start-day "-1d")
   )
 (evil-set-initial-state 'org-agenda-mode 'emacs)
 
