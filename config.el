@@ -135,7 +135,7 @@
                          ;; DEVICES
                          (:startgroup)
                          ("computer" . ?c)
-                         ("server" . ?s)
+                         ("server" . ?R)
                          (:endgroup)
                          ;; CONTEXTS
                          ("work" . ?w)
