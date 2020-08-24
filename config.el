@@ -99,13 +99,12 @@
                 ("MEETING" :foreground "gray")
                 )))
   (setq org-todo-state-tags-triggers
-        (quote (("CANCELLED" ("CANCELLED" . t))
+        (quote (("CANCELLED" ("CANCELLED" . t) ("WAITING") ("SMDAY"))
                 ("WAITING" ("WAITING" . t))
                 ("SMDAY" ("SMDAY" . t))
-                ("DONE" ("WAITING" "SMDAY" "CANCELLED"))
+                ("DONE" ("WAITING") ("SMDAY") ("CANCELLED"))
                 ("TODO" ("WAITING") ("CANCELLED") ("SMDAY"))
-                ("NEXT" ("WAITING") ("CANCELLED") ("SMDAY"))
-                )))
+                ("NEXT" ("WAITING") ("CANCELLED") ("SMDAY")))))
   :custom
   (org-directory "~/org/")
   (calendar-latitude 43.7682)   ;; Toronto, ON, Canada -> Change to your location
