@@ -215,10 +215,10 @@
     "Custom function to create journal header."
     (concat
       (pcase org-journal-file-type
-       (`daily "#+TITLE: Dagelijks dagboek\n#+STARTUP: showeverything")
-       (`weekly "#+TITLE: Wekelijks dagboek\n#+STARTUP: folded")
-       (`monthly "#+TITLE: Maandelijks dagboek\n#+STARTUP: folded")
-       (`yearly "#+TITLE: Jaarlijks dagboek \n#+STARTUP: folded")
+       ('daily "#+TITLE: Dagelijks dagboek\n#+STARTUP: showeverything")
+       ('weekly "#+TITLE: Wekelijks dagboek\n#+STARTUP: fold")
+       ('monthly "#+TITLE: Maandelijks dagboek\n#+STARTUP: fold")
+       ('yearly "#+TITLE: Jaarlijks dagboek \n#+STARTUP: fold")
      )))
   :custom
   (org-journal-dir "~/org/logboek/")
